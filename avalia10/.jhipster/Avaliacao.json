@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "aluno",
+            "otherEntityName": "aluno",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "avaliacao"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "modulo",
+            "otherEntityName": "modulo",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "avaliacao"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "turma",
+            "otherEntityName": "turma",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "avaliacao"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "professor",
+            "otherEntityName": "professor",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "avaliacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "questoes",
+            "otherEntityName": "questao",
+            "otherEntityRelationshipName": "avaliacao"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "objetivo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataInicio",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dataTermino",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "textoEmail",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170323025634",
+    "entityTableName": "avaliacao",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

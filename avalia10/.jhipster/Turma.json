@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "modulo",
+            "otherEntityName": "modulo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "alunos",
+            "otherEntityName": "aluno",
+            "otherEntityRelationshipName": "turma"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dataInicio",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dataFim",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170323025634",
+    "entityTableName": "turma",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

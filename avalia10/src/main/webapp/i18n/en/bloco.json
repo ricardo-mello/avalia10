@@ -1,0 +1,23 @@
+{
+    "avalia10App": {
+        "bloco" : {
+            "home": {
+                "title": "Blocos",
+                "createLabel": "Create a new Bloco",
+                "createOrEditLabel": "Create or edit a Bloco"
+            },
+            "created": "A new Bloco is created with identifier {{ param }}",
+            "updated": "A Bloco is updated with identifier {{ param }}",
+            "deleted": "A Bloco is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bloco {{ id }}?"
+            },
+            "detail": {
+                "title": "Bloco"
+            },
+            "descricao": "Descricao",
+            "curso": "Curso",
+            "modulos": "Modulos"
+        }
+    }
+}

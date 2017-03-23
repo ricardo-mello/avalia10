@@ -1,0 +1,24 @@
+{
+    "avalia10App": {
+        "turma" : {
+            "home": {
+                "title": "Turmas",
+                "createLabel": "Criar novo Turma",
+                "createOrEditLabel": "Criar ou editar Turma"
+            },
+            "created": "Um novo Turma é criado com o identificador {{ param }}",
+            "updated": "Um Turma é atualizado com o identificador {{ param }}",
+            "deleted": "Um Turma é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Turma {{ id }}?"
+            },
+            "detail": {
+                "title": "Turma"
+            },
+            "dataInicio": "Data Inicio",
+            "dataFim": "Data Fim",
+            "modulo": "Modulo",
+            "alunos": "Alunos"
+        }
+    }
+}

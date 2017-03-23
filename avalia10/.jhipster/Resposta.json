@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "tipo",
+            "fieldType": "RespostaEnum",
+            "fieldValues": "NAO_CONCORDO_T,NAO_CONCORDO_P,INDIFERENTE,CONCORDO_P,CONCORDO_T,SEM_AVALIACAO"
+        }
+    ],
+    "changelogDate": "20170323025634",
+    "entityTableName": "resposta",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

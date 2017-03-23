@@ -1,0 +1,30 @@
+{
+    "avalia10App": {
+        "avaliacao" : {
+            "home": {
+                "title": "Avaliacaos",
+                "createLabel": "Criar novo Avaliacao",
+                "createOrEditLabel": "Criar ou editar Avaliacao"
+            },
+            "created": "Um novo Avaliacao é criado com o identificador {{ param }}",
+            "updated": "Um Avaliacao é atualizado com o identificador {{ param }}",
+            "deleted": "Um Avaliacao é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Avaliacao {{ id }}?"
+            },
+            "detail": {
+                "title": "Avaliacao"
+            },
+            "codigo": "Codigo",
+            "objetivo": "Objetivo",
+            "dataInicio": "Data Inicio",
+            "dataTermino": "Data Termino",
+            "textoEmail": "Texto Email",
+            "aluno": "Aluno",
+            "modulo": "Modulo",
+            "turma": "Turma",
+            "professor": "Professor",
+            "questoes": "Questoes"
+        }
+    }
+}

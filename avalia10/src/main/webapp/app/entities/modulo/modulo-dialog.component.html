@@ -1,0 +1,53 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModuloLabel" jhiTranslate="avalia10App.modulo.home.createOrEditLabel">Create or edit a Modulo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!modulo.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="modulo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.modulo.descricao" for="field_descricao">Descricao</label>
+            <input type="text" class="form-control" name="descricao" id="field_descricao"
+                [(ngModel)]="modulo.descricao"
+            required />
+            <div [hidden]="!(editForm.controls.descricao?.dirty && editForm.controls.descricao?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.descricao?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.modulo.bloco" for="field_bloco">Bloco</label>
+            <select class="form-control" id="field_bloco" name="bloco" [(ngModel)]="modulo.bloco" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="blocoOption.id === modulo.bloco?.id ? modulo.bloco : blocoOption" *ngFor="let blocoOption of blocos; trackBy: trackBlocoById">{{blocoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.modulo.professor" for="field_professor">Professor</label>
+            <select class="form-control" id="field_professor" name="professor" [(ngModel)]="modulo.professor">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="professorOption.id === modulo.professor?.id ? modulo.professor : professorOption" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

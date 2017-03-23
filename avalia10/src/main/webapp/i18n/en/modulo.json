@@ -1,0 +1,24 @@
+{
+    "avalia10App": {
+        "modulo" : {
+            "home": {
+                "title": "Modulos",
+                "createLabel": "Create a new Modulo",
+                "createOrEditLabel": "Create or edit a Modulo"
+            },
+            "created": "A new Modulo is created with identifier {{ param }}",
+            "updated": "A Modulo is updated with identifier {{ param }}",
+            "deleted": "A Modulo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Modulo {{ id }}?"
+            },
+            "detail": {
+                "title": "Modulo"
+            },
+            "descricao": "Descricao",
+            "bloco": "Bloco",
+            "professor": "Professor",
+            "turmas": "Turmas"
+        }
+    }
+}

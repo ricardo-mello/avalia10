@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="avalia10App.questao.home.title">Questaos</span>
+        <button class="btn btn-primary float-right create-questao" [routerLink]="['/', { outlets: { popup: ['questao-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avalia10App.questao.home.createLabel">
+            Create new Questao
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="questaos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="avalia10App.questao.texto">Texto</span></th>
+            <th><span jhiTranslate="avalia10App.questao.ordem">Ordem</span></th>
+            <th><span jhiTranslate="avalia10App.questao.dataExclusao">Data Exclusao</span></th>
+            <th><span jhiTranslate="avalia10App.questao.avaliacao">Avaliacao</span></th>
+            <th><span jhiTranslate="avalia10App.questao.resposta">Resposta</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let questao of questaos ;trackBy: trackId">
+                <td><a [routerLink]="['../questao', questao.id ]">{{questao.id}}</a></td>
+                <td>{{questao.texto}}</td>
+                <td>{{questao.ordem}}</td>
+                <td>{{questao.dataExclusao | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="questao.avaliacao">
+                        <a [routerLink]="['../avaliacao', questao.avaliacao?.id ]" >{{questao.avaliacao?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="questao.resposta">
+                        <a [routerLink]="['../resposta', questao.resposta?.id ]" >{{questao.resposta?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../questao', questao.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'questao/'+ questao.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'questao/'+ questao.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

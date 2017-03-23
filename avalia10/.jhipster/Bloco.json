@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "curso",
+            "otherEntityName": "curso",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "modulos",
+            "otherEntityName": "modulo",
+            "otherEntityRelationshipName": "bloco"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170323025634",
+    "entityTableName": "bloco",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

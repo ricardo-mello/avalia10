@@ -1,0 +1,69 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myQuestaoLabel" jhiTranslate="avalia10App.questao.home.createOrEditLabel">Create or edit a Questao</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!questao.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="questao.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.questao.texto" for="field_texto">Texto</label>
+            <input type="text" class="form-control" name="texto" id="field_texto"
+                [(ngModel)]="questao.texto"
+            required />
+            <div [hidden]="!(editForm.controls.texto?.dirty && editForm.controls.texto?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.texto?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.questao.ordem" for="field_ordem">Ordem</label>
+            <input type="number" class="form-control" name="ordem" id="field_ordem"
+                [(ngModel)]="questao.ordem"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.questao.dataExclusao" for="field_dataExclusao">Data Exclusao</label>
+            <div class="input-group">
+                <input id="field_dataExclusao" type="text" class="form-control" name="dataExclusao" ngbDatepicker  #dataExclusaoDp="ngbDatepicker" [(ngModel)]="questao.dataExclusao"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dataExclusaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.questao.avaliacao" for="field_avaliacao">Avaliacao</label>
+            <select class="form-control" id="field_avaliacao" name="avaliacao" [(ngModel)]="questao.avaliacao" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="avaliacaoOption.id === questao.avaliacao?.id ? questao.avaliacao : avaliacaoOption" *ngFor="let avaliacaoOption of avaliacaos; trackBy: trackAvaliacaoById">{{avaliacaoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.questao.resposta" for="field_resposta">Resposta</label>
+            <select class="form-control" id="field_resposta" name="resposta" [(ngModel)]="questao.resposta">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="respostaOption.id === questao.resposta?.id ? questao.resposta : respostaOption" *ngFor="let respostaOption of respostas; trackBy: trackRespostaById">{{respostaOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

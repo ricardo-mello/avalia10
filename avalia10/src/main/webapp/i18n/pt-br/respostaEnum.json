@@ -1,0 +1,13 @@
+{
+    "avalia10App": {
+        "RespostaEnum" : {
+            "null": "",
+            "NAO_CONCORDO_T": "NAO_CONCORDO_T",
+            "NAO_CONCORDO_P": "NAO_CONCORDO_P",
+            "INDIFERENTE": "INDIFERENTE",
+            "CONCORDO_P": "CONCORDO_P",
+            "CONCORDO_T": "CONCORDO_T",
+            "SEM_AVALIACAO": "SEM_AVALIACAO"
+        }
+    }
+}

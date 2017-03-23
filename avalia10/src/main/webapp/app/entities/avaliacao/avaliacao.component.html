@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="avalia10App.avaliacao.home.title">Avaliacaos</span>
+        <button class="btn btn-primary float-right create-avaliacao" [routerLink]="['/', { outlets: { popup: ['avaliacao-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="avalia10App.avaliacao.home.createLabel">
+            Create new Avaliacao
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="avaliacaos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.codigo">Codigo</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.objetivo">Objetivo</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.dataInicio">Data Inicio</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.dataTermino">Data Termino</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.textoEmail">Texto Email</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.aluno">Aluno</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.modulo">Modulo</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.turma">Turma</span></th>
+            <th><span jhiTranslate="avalia10App.avaliacao.professor">Professor</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let avaliacao of avaliacaos ;trackBy: trackId">
+                <td><a [routerLink]="['../avaliacao', avaliacao.id ]">{{avaliacao.id}}</a></td>
+                <td>{{avaliacao.codigo}}</td>
+                <td>{{avaliacao.objetivo}}</td>
+                <td>{{avaliacao.dataInicio | date:'mediumDate'}}</td>
+                <td>{{avaliacao.dataTermino | date:'mediumDate'}}</td>
+                <td>{{avaliacao.textoEmail}}</td>
+                <td>
+                    <div *ngIf="avaliacao.aluno">
+                        <a [routerLink]="['../aluno', avaliacao.aluno?.id ]" >{{avaliacao.aluno?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="avaliacao.modulo">
+                        <a [routerLink]="['../modulo', avaliacao.modulo?.id ]" >{{avaliacao.modulo?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="avaliacao.turma">
+                        <a [routerLink]="['../turma', avaliacao.turma?.id ]" >{{avaliacao.turma?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="avaliacao.professor">
+                        <a [routerLink]="['../professor', avaliacao.professor?.id ]" >{{avaliacao.professor?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../avaliacao', avaliacao.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'avaliacao/'+ avaliacao.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'avaliacao/'+ avaliacao.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

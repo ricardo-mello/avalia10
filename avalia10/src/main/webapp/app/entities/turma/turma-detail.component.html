@@ -1,0 +1,35 @@
+
+<div *ngIf="turma">
+    <h2><span jhiTranslate="avalia10App.turma.detail.title">Turma</span> {{turma.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="avalia10App.turma.dataInicio">Data Inicio</span></dt>
+        <dd>
+            <span>{{turma.dataInicio | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.turma.dataFim">Data Fim</span></dt>
+        <dd>
+            <span>{{turma.dataFim | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.turma.modulo">Modulo</span></dt>
+        <dd>
+            <div *ngIf="turma.modulo">
+                <a [routerLink]="['/modulo', turma.modulo?.id]">{{turma.modulo?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'turma/'+ turma.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

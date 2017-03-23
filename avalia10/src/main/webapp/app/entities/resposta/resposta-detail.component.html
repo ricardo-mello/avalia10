@@ -1,0 +1,25 @@
+
+<div *ngIf="resposta">
+    <h2><span jhiTranslate="avalia10App.resposta.detail.title">Resposta</span> {{resposta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="avalia10App.resposta.tipo">Tipo</span></dt>
+        <dd>
+            <span jhiTranslate="{{'avalia10App.RespostaEnum.' + resposta.tipo}}">{{resposta.tipo}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'resposta/'+ resposta.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "avaliacao",
+            "otherEntityName": "avaliacao",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "resposta",
+            "otherEntityName": "resposta",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "questao"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "texto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ordem",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dataExclusao",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170323025634",
+    "entityTableName": "questao",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

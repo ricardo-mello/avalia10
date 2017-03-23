@@ -1,0 +1,37 @@
+
+<div *ngIf="modulo">
+    <h2><span jhiTranslate="avalia10App.modulo.detail.title">Modulo</span> {{modulo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="avalia10App.modulo.descricao">Descricao</span></dt>
+        <dd>
+            <span>{{modulo.descricao}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.modulo.bloco">Bloco</span></dt>
+        <dd>
+            <div *ngIf="modulo.bloco">
+                <a [routerLink]="['/bloco', modulo.bloco?.id]">{{modulo.bloco?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.modulo.professor">Professor</span></dt>
+        <dd>
+            <div *ngIf="modulo.professor">
+                <a [routerLink]="['/professor', modulo.professor?.id]">{{modulo.professor?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'modulo/'+ modulo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

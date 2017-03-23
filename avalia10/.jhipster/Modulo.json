@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "bloco",
+            "otherEntityName": "bloco",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "professor",
+            "otherEntityName": "professor",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "modulo"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "turmas",
+            "otherEntityName": "turma",
+            "otherEntityRelationshipName": "modulo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170323025634",
+    "entityTableName": "modulo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

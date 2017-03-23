@@ -1,0 +1,45 @@
+
+<div *ngIf="questao">
+    <h2><span jhiTranslate="avalia10App.questao.detail.title">Questao</span> {{questao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="avalia10App.questao.texto">Texto</span></dt>
+        <dd>
+            <span>{{questao.texto}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.questao.ordem">Ordem</span></dt>
+        <dd>
+            <span>{{questao.ordem}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.questao.dataExclusao">Data Exclusao</span></dt>
+        <dd>
+            <span>{{questao.dataExclusao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.questao.avaliacao">Avaliacao</span></dt>
+        <dd>
+            <div *ngIf="questao.avaliacao">
+                <a [routerLink]="['/avaliacao', questao.avaliacao?.id]">{{questao.avaliacao?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.questao.resposta">Resposta</span></dt>
+        <dd>
+            <div *ngIf="questao.resposta">
+                <a [routerLink]="['/resposta', questao.resposta?.id]">{{questao.resposta?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'questao/'+ questao.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

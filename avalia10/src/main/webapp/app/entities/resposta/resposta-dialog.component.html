@@ -1,0 +1,38 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myRespostaLabel" jhiTranslate="avalia10App.resposta.home.createOrEditLabel">Create or edit a Resposta</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!resposta.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="resposta.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.resposta.tipo" for="field_tipo">Tipo</label>
+            <select class="form-control" name="tipo" [(ngModel)]="resposta.tipo" id="field_tipo" >
+                <option value="NAO_CONCORDO_T" jhiTranslate="avalia10App.RespostaEnum.NAO_CONCORDO_T">NAO_CONCORDO_T</option>
+                <option value="NAO_CONCORDO_P" jhiTranslate="avalia10App.RespostaEnum.NAO_CONCORDO_P">NAO_CONCORDO_P</option>
+                <option value="INDIFERENTE" jhiTranslate="avalia10App.RespostaEnum.INDIFERENTE">INDIFERENTE</option>
+                <option value="CONCORDO_P" jhiTranslate="avalia10App.RespostaEnum.CONCORDO_P">CONCORDO_P</option>
+                <option value="CONCORDO_T" jhiTranslate="avalia10App.RespostaEnum.CONCORDO_T">CONCORDO_T</option>
+                <option value="SEM_AVALIACAO" jhiTranslate="avalia10App.RespostaEnum.SEM_AVALIACAO">SEM_AVALIACAO</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

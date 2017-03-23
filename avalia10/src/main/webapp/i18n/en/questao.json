@@ -1,0 +1,25 @@
+{
+    "avalia10App": {
+        "questao" : {
+            "home": {
+                "title": "Questaos",
+                "createLabel": "Create a new Questao",
+                "createOrEditLabel": "Create or edit a Questao"
+            },
+            "created": "A new Questao is created with identifier {{ param }}",
+            "updated": "A Questao is updated with identifier {{ param }}",
+            "deleted": "A Questao is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Questao {{ id }}?"
+            },
+            "detail": {
+                "title": "Questao"
+            },
+            "texto": "Texto",
+            "ordem": "Ordem",
+            "dataExclusao": "Data Exclusao",
+            "avaliacao": "Avaliacao",
+            "resposta": "Resposta"
+        }
+    }
+}

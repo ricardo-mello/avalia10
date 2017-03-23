@@ -1,0 +1,65 @@
+
+<div *ngIf="avaliacao">
+    <h2><span jhiTranslate="avalia10App.avaliacao.detail.title">Avaliacao</span> {{avaliacao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="avalia10App.avaliacao.codigo">Codigo</span></dt>
+        <dd>
+            <span>{{avaliacao.codigo}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.objetivo">Objetivo</span></dt>
+        <dd>
+            <span>{{avaliacao.objetivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.dataInicio">Data Inicio</span></dt>
+        <dd>
+            <span>{{avaliacao.dataInicio | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.dataTermino">Data Termino</span></dt>
+        <dd>
+            <span>{{avaliacao.dataTermino | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.textoEmail">Texto Email</span></dt>
+        <dd>
+            <span>{{avaliacao.textoEmail}}</span>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.aluno">Aluno</span></dt>
+        <dd>
+            <div *ngIf="avaliacao.aluno">
+                <a [routerLink]="['/aluno', avaliacao.aluno?.id]">{{avaliacao.aluno?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.modulo">Modulo</span></dt>
+        <dd>
+            <div *ngIf="avaliacao.modulo">
+                <a [routerLink]="['/modulo', avaliacao.modulo?.id]">{{avaliacao.modulo?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.turma">Turma</span></dt>
+        <dd>
+            <div *ngIf="avaliacao.turma">
+                <a [routerLink]="['/turma', avaliacao.turma?.id]">{{avaliacao.turma?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="avalia10App.avaliacao.professor">Professor</span></dt>
+        <dd>
+            <div *ngIf="avaliacao.professor">
+                <a [routerLink]="['/professor', avaliacao.professor?.id]">{{avaliacao.professor?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'avaliacao/'+ avaliacao.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,105 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAvaliacaoLabel" jhiTranslate="avalia10App.avaliacao.home.createOrEditLabel">Create or edit a Avaliacao</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!avaliacao.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="avaliacao.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.avaliacao.codigo" for="field_codigo">Codigo</label>
+            <input type="text" class="form-control" name="codigo" id="field_codigo"
+                [(ngModel)]="avaliacao.codigo"
+            required />
+            <div [hidden]="!(editForm.controls.codigo?.dirty && editForm.controls.codigo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.codigo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.avaliacao.objetivo" for="field_objetivo">Objetivo</label>
+            <input type="text" class="form-control" name="objetivo" id="field_objetivo"
+                [(ngModel)]="avaliacao.objetivo"
+            required />
+            <div [hidden]="!(editForm.controls.objetivo?.dirty && editForm.controls.objetivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.objetivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.avaliacao.dataInicio" for="field_dataInicio">Data Inicio</label>
+            <div class="input-group">
+                <input id="field_dataInicio" type="text" class="form-control" name="dataInicio" ngbDatepicker  #dataInicioDp="ngbDatepicker" [(ngModel)]="avaliacao.dataInicio"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dataInicioDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.avaliacao.dataTermino" for="field_dataTermino">Data Termino</label>
+            <div class="input-group">
+                <input id="field_dataTermino" type="text" class="form-control" name="dataTermino" ngbDatepicker  #dataTerminoDp="ngbDatepicker" [(ngModel)]="avaliacao.dataTermino"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dataTerminoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="avalia10App.avaliacao.textoEmail" for="field_textoEmail">Texto Email</label>
+            <input type="text" class="form-control" name="textoEmail" id="field_textoEmail"
+                [(ngModel)]="avaliacao.textoEmail"
+             />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.avaliacao.aluno" for="field_aluno">Aluno</label>
+            <select class="form-control" id="field_aluno" name="aluno" [(ngModel)]="avaliacao.aluno">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="alunoOption.id === avaliacao.aluno?.id ? avaliacao.aluno : alunoOption" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.avaliacao.modulo" for="field_modulo">Modulo</label>
+            <select class="form-control" id="field_modulo" name="modulo" [(ngModel)]="avaliacao.modulo">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="moduloOption.id === avaliacao.modulo?.id ? avaliacao.modulo : moduloOption" *ngFor="let moduloOption of modulos; trackBy: trackModuloById">{{moduloOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.avaliacao.turma" for="field_turma">Turma</label>
+            <select class="form-control" id="field_turma" name="turma" [(ngModel)]="avaliacao.turma">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="turmaOption.id === avaliacao.turma?.id ? avaliacao.turma : turmaOption" *ngFor="let turmaOption of turmas; trackBy: trackTurmaById">{{turmaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="avalia10App.avaliacao.professor" for="field_professor">Professor</label>
+            <select class="form-control" id="field_professor" name="professor" [(ngModel)]="avaliacao.professor">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="professorOption.id === avaliacao.professor?.id ? avaliacao.professor : professorOption" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
